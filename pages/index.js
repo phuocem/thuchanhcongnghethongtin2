@@ -2,7 +2,7 @@ import Head from "next/head";
 import localFont from "next/font/local";
 import Image from "next/image"; // Import component Image
 import styles from "../styles/Home.module.css"; // Import styles từ Home.module.css
-
+import { useRouter } from 'next/router';
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -16,6 +16,11 @@ const geistMono = localFont({
 });
 
 export default function Home() {
+  const router = useRouter();
+
+  const goToPageB = () => {
+    router.push('/b'); // Chuyển hướng sang trang /b
+  };
   return (
     <>
       <Head>
@@ -30,14 +35,11 @@ export default function Home() {
         </div>
         <div className={styles.middle}>
           <div className={styles.left}>
-            <div className={styles.parentEl}>
-              <Image
+          <img className={styles.image}
                 src="/image/nui.png"
                 alt="picture"
-                layout="fill"
-                objectFit="cover"
               />
-            </div>
+
           </div>
           <div className={styles.middlecenter}>
             <h2>Chào mừng đến với ứng dụng của tôi</h2>
@@ -45,17 +47,14 @@ export default function Home() {
               Đây là phần giữa của layout, nơi bạn có thể thêm bất kỳ nội dung
               nào bạn muốn.
             </p>
-            <button className={styles.button}>Nhấn vào đây</button>
+            <button className={styles.button} onClick={goToPageB} >Nhấn vào đây</button>
           </div>
           <div className={styles.right}>
-            <div className={styles.parentEl}>
-              <Image
+
+              <img className={styles.image}
                 src="/image/bien.png"
                 alt="picture"
-                layout="fill"
-                objectFit="cover"
               />
-            </div>
           </div>
         </div>
         <div className={styles.bottom}>
